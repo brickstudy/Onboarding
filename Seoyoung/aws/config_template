@@ -1,0 +1,9 @@
+[default]
+aws_access_key_id=<default access key>
+aws_secret_access_key=<default secret key>
+region=ap-northeast-2
+
+[profile testing]
+aws_access_key_id=<testing access key>
+aws_secret_access_key=<testing secret key>
+region=us-west-2
