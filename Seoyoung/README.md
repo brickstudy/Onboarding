@@ -1,7 +1,9 @@
 ## local 작업 환경 셋팅
 크게 아래와 같은 두 환경으로 분리했습니다.
+
 A. jupyter notebook을 사용하여 interactive하게 pyspark를 사용한 데이터 처리 코드를 개발할 수 있는 환경
     - Dockerfile, docker-compose.yml
+
 B. master 1, worker 1 로 구성된 spark cluster 환경
     - #TODO, docker-compose_prod_test.yml
 
@@ -18,3 +20,8 @@ B. master 1, worker 1 로 구성된 spark cluster 환경
     - requirements.txt로 관리
     - 기본 필요 라이브러리 현재 `awscli`, `boto3`, `pandas`, `pytest` 로 정의
 
+## Getting Started
+1. aws/config_template 파일, conf/spark-defaults_template 파일에 aws 자격증명 명시, _template posfix 제거
+2. 로컬 개발 환경 구성
+    2-1. 주피터 환경(A) `docker-compose up -d`
+    2-2. 스파크 클러스터 환경(B) *not implemented yet
