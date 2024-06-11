@@ -29,5 +29,8 @@ RUN jupyter nbextension enable /home/jovyan/work
 RUN mkdir -p /root/.aws
 COPY aws /root/.aws
 
+# Set WORKDIR as /home/jovyan/work
+WORKDIR /home/jovyan/work
+
 # Expose the default port for Jupyter
 EXPOSE 8888
