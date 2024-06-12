@@ -1,0 +1,35 @@
+FROM bitnami/spark:latest
+
+USER root
+
+# Install python libraries
+COPY ./requirements.txt ./
+RUN pip install -r requirements.txt
+
+# Image lightweight
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    rsync && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Configure Spark
+COPY ./conf/spark-defaults.conf "$SPARK_HOME/conf/spark-defaults.conf"
+ENV SPARK_CONF_DIR="$SPARK_HOME/conf"
+ENV PYSPARK_PYTHON python3
+ENV SPARK_MASTER="spark://spark-master:7077"
+ENV SPARK_MASTER_HOST spark-master
+ENV SPARK_MASTER_PORT 7077
+
+# Create and event logging directory to store job logs
+RUN mkdir /opt/spark/spark-events
+
+RUN chmod u+x /opt/spark/sbin/* && \
+    chmod u+x /opt/spark/bin/*
+
+ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+ENV PYTHONPATH=/opt/spark/work-dir/src/:$PYTHONPATH
+
+COPY entrypoint.sh .
+
+ENTRYPOINT ["./entrypoint.sh"]
