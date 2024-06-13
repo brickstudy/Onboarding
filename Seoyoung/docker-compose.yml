@@ -11,6 +11,4 @@ services:
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - GRANT_SUDO=yes
-    env_file:
-      - ./aws/.env
     command: start-notebook.sh --NotebookApp.token=''

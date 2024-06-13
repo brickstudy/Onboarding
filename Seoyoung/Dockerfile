@@ -26,8 +26,8 @@ RUN jupyter contrib nbextension install
 RUN jupyter nbextension enable /home/jovyan/work
 
 # Configure AWS (Required - AWS configuration files should be placed under aws/)
-RUN mkdir -p /root/.aws
-COPY aws /root/.aws
+RUN mkdir -p /home/jovyan/.aws
+COPY aws /home/jovyan/.aws/
 
 # Set WORKDIR as /home/jovyan/work
 WORKDIR /home/jovyan/work

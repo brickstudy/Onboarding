@@ -125,4 +125,6 @@ dmypy.json
 # personal
 notebooks/notes.md
 aws/config
+aws/credentials
 conf/spark-defaults.conf
+spark-logs/
