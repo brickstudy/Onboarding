@@ -17,6 +17,7 @@ RUN apt-get update && \
 # Configure Spark
 COPY ./conf/spark-defaults.conf "$SPARK_HOME/conf/spark-defaults.conf"
 ENV SPARK_CONF_DIR="$SPARK_HOME/conf"
+COPY jars "$SPARK_HOME/jars"
 ENV PYSPARK_PYTHON python3
 
 # Install Jupyter notebook extensions
