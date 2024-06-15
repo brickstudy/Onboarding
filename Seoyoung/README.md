@@ -20,8 +20,10 @@ B. master 1, worker 1 로 구성된 spark cluster 환경
     - requirements.txt로 관리
     - 기본 필요 라이브러리 현재 `awscli`, `boto3`, `pandas`, `pytest` 로 정의
 
+
 ## Getting Started
-1. aws/config_template 파일, conf/spark-defaults_template 파일에 aws 자격증명 명시, _template posfix 제거
-2. 로컬 개발 환경 구성
-    2-1. 주피터 환경(A) `docker-compose up -d`
-    2-2. 스파크 클러스터 환경(B) *not implemented yet
+1. aws/.env_template 파일에 aws 자격증명 명시, _template posfix 제거
+2. conf/spark-defaults_template 파일에 aws 자격증명 명시, _template posfix 제거
+3. 로컬 개발 환경 구성
+    3-1. local mode 환경(A) `docker-compose up -d`
+    3-2. spark standalone cluster 환경(B) `docker-compose -f docker-compose_prod_test.yml up -d`
