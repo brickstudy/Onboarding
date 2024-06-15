@@ -20,7 +20,7 @@ services:
     volumes:
       - ./scripts/src:/opt/spark/work-dir/src
       - ./scripts/data:/opt/spark/work-dir/data
-      - ./scripts/spark-logs:/opt/spark/spark-events
+      - ./scripts/spark-logs:/opt/spark/logs
 
   spark-worker:
     image: spark
@@ -38,7 +38,7 @@ services:
     volumes:
       - ./scripts/src:/opt/spark/work-dir/src
       - ./scripts/data:/opt/spark/work-dir/data
-      - ./scripts/spark-logs:/opt/spark/spark-events
+      - ./scripts/spark-logs:/opt/spark/logs
 
   spark-history-server:
     container_name: spark-history
@@ -47,6 +47,6 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./scripts/spark-logs:/opt/spark/spark-events
+      - ./scripts/spark-logs:/opt/spark/logs
     ports:
       - '18080:18080'

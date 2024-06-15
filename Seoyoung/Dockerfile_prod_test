@@ -16,13 +16,16 @@ RUN apt-get update && \
 # Configure Spark
 COPY ./conf/spark-defaults.conf "$SPARK_HOME/conf/spark-defaults.conf"
 ENV SPARK_CONF_DIR="$SPARK_HOME/conf"
-ENV PYSPARK_PYTHON python3
+ENV PYSPARK_PYTHON=python3
 ENV SPARK_MASTER="spark://spark-master:7077"
-ENV SPARK_MASTER_HOST spark-master
-ENV SPARK_MASTER_PORT 7077
+ENV SPARK_MASTER_HOST=spark-master
+ENV SPARK_MASTER_PORT=7077
 
 # Create and event logging directory to store job logs
-RUN mkdir /opt/spark/spark-events
+RUN mkdir /opt/spark/logs
+ENV SPARK_LOG_DIR=/opt/spark/logs
+ENV SPARK_MASTER_LOG=/opt/spark/logs/spark-master.out
+ENV SPARK_WORKER_LOG=/opt/spark/logs/spark-worker.out
 
 RUN chmod u+x /opt/spark/sbin/* && \
     chmod u+x /opt/spark/bin/*
